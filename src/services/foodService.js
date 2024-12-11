@@ -11,7 +11,6 @@ const show = async (foodId) => {
     }
   };
   
-
   const create = async (foodFormData) => {
     try {
       const res = await fetch(BASE_URL, {
@@ -28,4 +27,4 @@ const show = async (foodId) => {
     }
   };
   
-  export { index, show, create };
+  export { show, create };

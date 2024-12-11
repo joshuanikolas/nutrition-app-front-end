@@ -8,6 +8,7 @@ const SigninForm = (props) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
+    passwordConf: '',
   });
 
   const updateMessage = (msg) => {

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import * as foodService from '../../services/foodService'
+import { useParams } from 'react-router-dom';
 
 const FoodForm = (props) => {
   const [formData, setFormData] = useState({
@@ -31,7 +33,7 @@ const FoodForm = (props) => {
           onChange={handleChange}
         />
         <label htmlFor="date-input">Date</label>
-        <textarea
+        <input
           required
           type="date"
           name="date"

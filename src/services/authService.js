@@ -7,6 +7,7 @@ const signup = async (formData) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
+        
         const json = await res.json()
         console.log(json)
 
@@ -30,11 +31,14 @@ const signin = async (user) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         })
+        
         const json = await res.json()
         console.log(json)
+
         if(json.err) {
             throw new Error(json.err)
         }
+
         if (json.token) {
             localStorage.setItem('token', json.token)
             const user = JSON.parse(atob(json.token.split('.')[1]));
