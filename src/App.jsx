@@ -8,6 +8,8 @@ import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from './services/authService';
 import FoodList from './components/FoodList/FoodList';
 import * as foodService from './services/foodService';
+import FoodDetails from './components/FoodDetails/FoodDetails';
+
 
 
 const App = () => {
@@ -42,6 +44,8 @@ const App = () => {
   <Route path="/signup" element={<SignupForm setUser={setUser} />} />
   <Route path="/signin" element={<SigninForm setUser={setUser} />} />
   <Route path="/foods" element={<FoodList foods={foods} />} />
+  <Route path="/foods/:foodId" element={<foodDetails />} />
+
 
 </Routes>
     </>
