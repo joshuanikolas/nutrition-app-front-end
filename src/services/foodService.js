@@ -11,8 +11,21 @@ const show = async (foodId) => {
     }
   };
   
-  export {
-    index,
-    show,
+
+  const create = async (foodFormData) => {
+    try {
+      const res = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(foodFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
   };
   
+  export { index, show, create };

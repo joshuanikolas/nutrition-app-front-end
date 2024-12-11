@@ -9,7 +9,8 @@ import * as authService from './services/authService';
 import FoodList from './components/FoodList/FoodList';
 import * as foodService from './services/foodService';
 import FoodDetails from './components/FoodDetails/FoodDetails';
-
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import FoodForm from './components/FoodForm/FoodForm';
 
 
 const App = () => {
@@ -29,6 +30,13 @@ const App = () => {
     setUser(null)
   }
 
+  const navigate = useNavigate();
+  const handleAddFood = async (foodFormData) => {
+    const newFood = await foodService.create(foodFormData);
+    setFoods([newFood, ...foods]);
+    navigate('/foods');
+  };
+
   return (
     <>
       <NavBar user={user} handleSignout={handleSignout}/>
@@ -45,6 +53,7 @@ const App = () => {
   <Route path="/signin" element={<SigninForm setUser={setUser} />} />
   <Route path="/foods" element={<FoodList foods={foods} />} />
   <Route path="/foods/:foodId" element={<foodDetails />} />
+  <Route path="/foods/new" element={<FoodForm handleAddFood={handleAddFood} />} />
 
 
 </Routes>

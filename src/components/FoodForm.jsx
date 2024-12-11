@@ -15,8 +15,7 @@ const FoodForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('formData', formData);
-    // We'll update this function shortly...
+    props.handleAddFood(formData);
   };
 
   return (
