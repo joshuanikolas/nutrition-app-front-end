@@ -11,20 +11,48 @@ const CommentForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    props.handleAddComment(formData)
     setFormData({ text: '' });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="text-input">Nutrition Facts:</label>
-      <textarea
-        required
-        type="text"
-        name="text"
-        id="text-input"
-        value={formData.text}
-        onChange={handleChange}
-      />
+      <label htmlFor="protein-input">Protein:</label>
+      <input
+          required
+          type="protein"
+          name="protein"
+          id="protein-input"
+          value={formData.protein}
+          onChange={handleChange}
+        />
+     <label htmlFor="calories-input">Calories:</label>
+      <input
+          required
+          type="calories"
+          name="calories"
+          id="calories-input"
+          value={formData.calories}
+          onChange={handleChange}
+        />
+    <label htmlFor="fats-input">Fats:</label>
+      <input
+          required
+          type="fats"
+          name="fats"
+          id="fats-input"
+          value={formData.fats}
+          onChange={handleChange}
+        />
+    <label htmlFor="carbs-input">Carbs:</label>
+      <input
+          required
+          type="carbs"
+          name="carbs"
+          id="carbs-input"
+          value={formData.carbs}
+          onChange={handleChange}
+        />
       <button type="submit">SUBMIT</button>
     </form>
   );

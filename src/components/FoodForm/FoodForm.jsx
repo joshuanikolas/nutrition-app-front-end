@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as foodService from '../../services/foodService'
 import { useParams } from 'react-router-dom';
 
@@ -11,14 +11,30 @@ const FoodForm = (props) => {
     weightGoal: ''
   });
 
+
+  const {foodId} = useParams()
+
+  useEffect(()=> {
+    const fetchFood = async () => {
+        const foodData = await foodService.show(foodId)
+        setFormData(foodData)
+    }
+    if(foodId) fetchFood()
+  }, [foodId])
+
+
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddFood(formData);
-  };
+    if (foodId) {
+      props.handleUpdateFood(foodId, formData)
+    } else {
+      props.handleAddFood(formData)
+    };
+};
 
   return (
     <main>
@@ -70,5 +86,4 @@ const FoodForm = (props) => {
     </main>
   );
 };
-
 export default FoodForm;
